@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+	
+{% block CSSBlock %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+	{% block BodyBlock %}
+		<div id="glimpse" class="section">
+			<div class="inner-section">
+				<span style="font-size: 5rem; font-family: 'Audiowide'; line-height: 200px; color: var(--helper-3);">
+					Top {{ top_number }}
+				</span>
+				{% for work in works %}
+					<div class="work-card">
+						<h3 style="font-weight: 500; color: var(--primary-2);">{{ work.Title }}</h3>
+						<small><small style="font-weight: 300; color: var(--primary-2);">By : <i>{{ work.ByUser }}</i></small></small>
+						<br><br>
+						<p style="font-weight: 300;">
+						<small>
+							{{ work.MainLiner }}<small><i>...read more</i></small>
+						</small>
+						</p>
+						<!-- <br>
+						<small><small>
+							{{ work.DateTimePosted }}
+						</small></small> -->
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div id="what" class="section">
+			<div class="inner-section">
+				<div>
+					<h2>What is Perspectivo?</h2>
+					<br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				</div>
+				<div>
+					<h2>How does it work?</h2>
+					<br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				</div>
+			</div>
+		</div>
+
+		<div id="vision" class="section">
+			<div class="inner-section">
+				<div>
+					<h2>Perspectivo's Vision</h2>
+					<br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</div>
+				<div>
+					<h2>Join the community now</h2>
+					<br>
+					<form>
+						<center style="font-weight: 500;">Become a partner</center>
+						<input type="name" name="name" placeholder="Your Name">
+						<br>
+						<input type="email" name="email" placeholder="Your Email Address">
+						<br>
+						<input type="number" name="number" placeholder="Your Number">
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div id="about" class="section">
+			<div class="inner-section">
+				<div>
+					<h2>About</h2>
+					<br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</div>
+			</div>
+		</div>
+
+	{% endblock %}

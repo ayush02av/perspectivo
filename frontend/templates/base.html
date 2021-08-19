@@ -1,0 +1,26 @@
+{% load static %}<!DOCTYPE html>
+<html>
+<head>
+	<title>Perspectivo {{ title }}</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+	{% block CSSBlock %}
+	{% endblock %}
+</head>
+<body>
+	{% if top_banner == True %}
+	{% include 'common/top_banner.html' %}
+	{% endif %}
+
+	{% include 'common/header.html' %}
+	
+	<div id="body">{% block BodyBlock %}
+	{% endblock %}</div>
+	
+	<!-- {% include 'common/footer.html' %} -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	{% block JSBlock %}{% endblock %}
+	<script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+</body>
+</html>
