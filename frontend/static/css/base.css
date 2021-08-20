@@ -88,3 +88,36 @@ span#home-link{
 		margin: 0 5%;
 	}
 }
+
+.highlight-on-hover{
+	transition: 0.5s;
+}
+.highlight-on-hover:hover{
+	text-shadow: 3px 3px 10px purple;
+	transition: 0.5s;
+}
+
+.work-card{
+	font-family: Montserrat;
+
+	cursor: pointer;
+
+	padding-top: 20px;
+	padding-left: 20px;
+
+	/*color: */
+	border: 1px solid purple;
+
+	min-height: 200px;
+	border-radius: 3px;
+
+	transition: 0.2s;
+}
+
+.work-card:hover{
+	box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.2),
+				-10px 0px 20px rgba(0, 0, 0, 0.2),
+				0px 10px 20px rgba(0, 0, 0, 0.2),
+				0px -10px 20px rgba(0, 0, 0,0.2);
+	transition: 0.5s;
+}

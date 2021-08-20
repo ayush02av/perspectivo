@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+	
+{% block CSSBlock %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/workdisplay.css' %}">
+{% endblock %}
+
+	{% block BodyBlock %}
+
+		<div id="work-display">
+			<h1>{{ work.Title }}</h1>
+			<small style="font-weight: 300; color: var(--helper-3);">By : <i>{{ work.ByUser }}, on {{ work.DateTimePosted }}</i></small>
+			<br><br>
+			{% if work.Image %}<center><img style="max-width: 100%; max-height: 400px; border-radius: 3px; box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.1), -10px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.1), 0px -10px 20px rgba(0, 0, 0, 0.1); " src="{{ work.Image.url }}"></center>{% endif %}
+			<p style="padding: 10px 20px;"><small><i>{{ work.MainLiner }}</i></small></p>
+			<br><br>
+			<p style="padding: 10px 10px;">{{ work.Content | safe }}</p>
+		</div>
+
+	{% endblock %}
+
+
+file
+image
+reviews

@@ -8,11 +8,15 @@
 	{% block BodyBlock %}
 		<div id="glimpse" class="section">
 			<div class="inner-section">
-				<span style="font-size: 5rem; font-family: 'Audiowide'; line-height: 200px; color: var(--helper-3);">
+				<span style="font-size: 5rem; font-family: 'Audiowide';  color: var(--helper-3);">
 					Top {{ top_number }}
+					<br>
+					<span style="font-size: 20px;">
+						<i onclick="Redirect('/feed/')" class="highlight-on-hover" style="cursor: pointer;">or check the whole feed</i>
+					</span>
 				</span>
 				{% for work in works %}
-					<div class="work-card">
+					<div class="work-card" onclick="Redirect('/{{ work.ByUser }}/{{ work.Title }}')">
 						<h3 style="font-weight: 500; color: var(--primary-2);">{{ work.Title }}</h3>
 						<small><small style="font-weight: 300; color: var(--primary-2);">By : <i>{{ work.ByUser }}</i></small></small>
 						<br><br>

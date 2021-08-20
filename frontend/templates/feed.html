@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+	
+{% block CSSBlock %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/feed.css' %}">
+{% endblock %}
+
+	{% block BodyBlock %}
+		<br><br><br>
+		<center><h1>
+			PERSPECTIVO FEED
+		</h1></center>
+
+		<div id="feed">
+			{% for work in works %}
+				<div class="work-card feed-card" onclick="Redirect('/{{ work.ByUser }}/{{ work.Title }}')">
+					<h3 style="font-weight: 500; color: var(--primary-2);">{{ work.Title }}</h3>
+					<small><small style="font-weight: 300; color: var(--primary-2); padding-right: 20px;">By : <i>{{ work.ByUser }}</i></small></small>
+					<br><br>
+					<p style="font-weight: 300;">
+					{% if work.Image %}<center><img style="float: left; max-width: 100%; max-height: 200px; border-radius: 3px;" src="{{ work.Image.url }}"></center>{% endif %}
+					<small>
+						{{ work.MainLiner }}<small><i>...read more</i></small>
+					</small>
+					</p>
+				</div>
+			{% endfor %}
+		</div>
+
+	{% endblock %}
