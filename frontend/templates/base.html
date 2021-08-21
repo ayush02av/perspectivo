@@ -1,9 +1,11 @@
-{% load static %}<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Perspectivo {{ title }}</title>
+	{% if title %}<title>Perspectivo | {{ title }}</title>
+	{% else %}<title>Perspectivo</title>
+	{% endif %}
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+	<link rel="stylesheet" type="text/css" href="/static/css/base.css">
 	{% block CSSBlock %}
 	{% endblock %}
 </head>
@@ -12,15 +14,34 @@
 	{% include 'common/top_banner.html' %}
 	{% endif %}
 
-	{% include 'common/header.html' %}
+	<!-- {% include 'common/header.html' %} -->
+
+	{% if messages %}
+
+		{% for message in messages %}
+			<div id="message-box" class="message-{{ message.tags }}">
+				{{ message }}
+			</div>
+			<script type="text/javascript">
+				setTimeout(function(){
+					document.getElementById('message-box').style.display = "none";
+				}, 3000);
+			</script>
+		{% endfor %}
+
+	{% endif %}
+
+
+	<div id="root">
+		<div id="body">
+		{% block BodyBlock %}
+		{% endblock %}</div>
+	</div>
 	
-	<div id="body">{% block BodyBlock %}
-	{% endblock %}</div>
-	
-	<!-- {% include 'common/footer.html' %} -->
+	{% include 'common/footer.html' %}
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	{% block JSBlock %}{% endblock %}
-	<script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+	<script type="text/javascript" src="/static/js/base.js"></script>
 </body>
 </html>

@@ -1,6 +1,56 @@
 {% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/common/footer.css' %}">
+
 	<div id="footer">
-		<i>welcome to</i>
-		<span id="home-link">Perspectivo</span>
+		<h2>Perspectivo</h2>
+		<br>
+
+		<div id="footer-container">
+			<div class="footer-card">
+				<h2>Quick Links</h2>
+				<br>
+				<li onclick="Redirect('/?view-home=true')" class="highlight-on-hover">Home</li>
+				<li onclick="Redirect('/feed/')" class="highlight-on-hover">Feed</li>
+
+				{% if request.user.is_authenticated %}
+				<li onclick="Redirect('/profile/')" class="highlight-on-hover">{{ request.user.get_full_name }}</li>
+				{% else %}
+				<li onclick="Redirect('/account/?page=login')" class="highlight-on-hover">Login</li>				
+				<li onclick="Redirect('/account/?page=signin')" class="highlight-on-hover">Register</li>
+				{% endif %}
+
+				<li onclick="Redirect('/account/?page=signin')" class="highlight-on-hover">Become a Partner</li>
+				{% if request.user.is_superuser %}
+				<li onclick="Redirect('/admin/', true)" class="highlight-on-hover">Admin Privileges</li>
+				{% endif %}
+			</div>
+
+			<div class="footer-card">
+				<h2>Socials</h2>
+				<br>
+				<li onclick="Redirect('/?view-home=true#footer', true)" class="highlight-on-hover">Instagram</li>
+				<li onclick="Redirect('/?view-home=true#footer', true)" class="highlight-on-hover">Facebook</li>
+				<li onclick="Redirect('/?view-home=true#footer', true)" class="highlight-on-hover">Twitter</li>
+				<li onclick="Redirect('/?view-home=true#footer', true)" class="highlight-on-hover">YouTube</li>
+				<li onclick="Redirect('/?view-home=true#footer', true)" class="highlight-on-hover">Discord</li>
+			</div>
+
+			<div class="footer-card">
+				<h2>Our Top Works</h2>
+				<br>
+				<li onclick="Redirect('/feed/')" class="highlight-on-hover">Top Articles</li>
+				<li onclick="Redirect('/feed/')" class="highlight-on-hover">Top Music</li>
+				<li onclick="Redirect('/feed/')" class="highlight-on-hover">Top Poems</li>
+				<li onclick="Redirect('/feed/')" class="highlight-on-hover">Other Top Works...</li>
+			</div>
+
+			<div class="footer-card">
+				<h2>Contact</h2>
+				<br>
+				<li onclick="Redirect('mailto:ayush02av@gmail.com')" class="highlight-on-hover">contact@perspectivo.com</li>
+				<li onclick="Redirect('tel:+919315095036')" class="highlight-on-hover">+91 931-509-5046</li>
+				<li onclick="Redirect('https://cradevin.herokuapp.com', true)" class="highlight-on-hover">Developer Cradevin</li>
+				<li onclick="Redirect('https://github.com/ayush02av/perspectivo', true)" class="highlight-on-hover">GitHub Repository</li>
+			</div>
+		</div>
 	</div>

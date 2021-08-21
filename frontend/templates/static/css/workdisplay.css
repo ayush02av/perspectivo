@@ -1,0 +1,9 @@
+#review-box{
+	display: none;
+	background: lightgreen;
+}
+
+#review-box > textarea{
+	min-height: 100px;
+	resize: vertical;
+}

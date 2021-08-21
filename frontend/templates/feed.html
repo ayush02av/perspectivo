@@ -1,30 +1,43 @@
-{% extends 'base.html' %}
-{% load static %}
-	
-{% block CSSBlock %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/feed.css' %}">
-{% endblock %}
-
-	{% block BodyBlock %}
-		<br><br><br>
-		<center><h1>
-			PERSPECTIVO FEED
-		</h1></center>
-
-		<div id="feed">
-			{% for work in works %}
-				<div class="work-card feed-card" onclick="Redirect('/{{ work.ByUser }}/{{ work.Title }}')">
-					<h3 style="font-weight: 500; color: var(--primary-2);">{{ work.Title }}</h3>
-					<small><small style="font-weight: 300; color: var(--primary-2); padding-right: 20px;">By : <i>{{ work.ByUser }}</i></small></small>
-					<br><br>
-					<p style="font-weight: 300;">
-					{% if work.Image %}<center><img style="float: left; max-width: 100%; max-height: 200px; border-radius: 3px;" src="{{ work.Image.url }}"></center>{% endif %}
-					<small>
-						{{ work.MainLiner }}<small><i>...read more</i></small>
-					</small>
-					</p>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Perspectivo | Feed</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/static/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/feed.css">
+</head>
+<body>
+	{% include 'common/header.html' %}
+	<div id="root">
+		<div id="body">
+			<div class="section">
+				<div class="inner-section">
+					<div id="feed">
+						<h2>PERSPECTIVO FEED</h2>
+						<br>
+						<div id="feed-container">
+							{% for work in works %}
+								<!-- {{ forloop.counter }} -->
+								<div class="work-card feed-card" onclick="Redirect('/{{ work.ByUser }}/{{ work.Title }}', true)">
+									<div class="feed-card-title">
+										{{ work.Title }}
+									</div>
+									<div class="feed-card-byuser">
+										<i>By : {{ work.ByUser }}</i>
+									</div>
+									{% if work.Image %}<img src="{{ work.Image.url }}" class="feed-card-image">{% endif %}
+									<div class="feed-card-mainliner">
+										{{ work.MainLiner }}<i>...read more</i>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
 				</div>
-			{% endfor %}
+			</div>
 		</div>
-
-	{% endblock %}
+	</div>
+	{% include 'common/footer.html' %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/base.js"></script>
+</body>

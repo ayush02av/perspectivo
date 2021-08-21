@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Perspectivo | Accounts</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/static/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/account.css">
+</head>
+<body>
+	{% include 'common/header.html' %}
+	<div id="root">
+		<div id="body">
+			<div class="section">
+				<div id="account-forms-container" class="inner-section">
+					{% if not request.GET.page or request.GET.page == 'signin' %}
+					<div id="signin-container" class="account-form-container">
+						<h2>Community awaits the artist in you</h2>
+						<center>
+							<span class="highlight-on-hover" onclick="Redirect('?page=login')">Already have an account? Login Here</span>
+						</center>
+						<br>
+						<form method="POST">{% csrf_token %}
+							<h3>Sign Up</h3>
+							<input id="username" type="name" name="username" placeholder="Username *" required value="{{ username }}">
+							<br>
+							<input type="name" name="name" placeholder="Full Name *" required value="{{ name }}">
+							<br>
+							<input type="email" name="email" placeholder="Email Address *" required value="{{ email }}">
+							<br>
+							<input type="number" name="number" placeholder="Mobile Number" value="{{ number }}">
+							<br>
+							<textarea name="about" placeholder="A bit about yourself, if you may?">{{ about }}</textarea>
+							<br>
+							<br>
+							<input type="password" name="password" placeholder="Set Password *" required>
+							<br>
+							<input type="password" name="passwordconfirm" placeholder="Confirm Password *" required>
+							<br>
+							<input type="submit" name="submit" value="Sign Up">
+						</form>
+					</div>
+					{% elif request.GET.page == 'login' %}
+					<div id="login-container" class="account-form-container">
+						<h2>Welcome back artist</h2>
+						<center>
+							<span class="highlight-on-hover" onclick="Redirect('?page=signin')">New here? Register now!</span>
+						</center>
+						<br>
+						<form method="POST">{% csrf_token %}
+							<h3>Log In</h3>
+							<input id="username" type="name" name="username" placeholder="Username *" required="Username is required">
+							<br>
+							<input type="password" name="password" placeholder="Password *" required>
+							<br>
+							<input type="submit" name="submit" value="Log In">
+						</form>
+					</div>
+					{% endif %}
+					<script type="text/javascript">
+						document.getElementById('username').focus();
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% include 'common/footer.html' %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/base.js"></script>
+</body>

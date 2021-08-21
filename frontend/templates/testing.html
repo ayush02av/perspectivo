@@ -1,0 +1,51 @@
+<h2>This is perspectivo's testing page</h2>
+
+<input id="postidinput" type="name" name="postid" placeholder="Enter your post id here" autocomplete="off">
+
+<br>
+<br>
+
+<button id="like-button" onclick="Like()">Like</button>
+
+<br>
+<br>
+
+<span id="logger">This is the logger</span>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
+
+<script type="text/javascript">
+
+	var postid_input = document.getElementById('postidinput');
+	var like_button = document.getElementById('like-button');
+
+	postid_input.focus();
+
+	function Like(){
+		var postid = postid_input.value;
+		if(postid != ""){
+			// $.ajax({
+			// 	type:"GET",
+			// 	url:"/ajaxtesting/",
+			// 	data:{
+			// 		postid:postid
+			// 	},
+			// 	success:function(data){
+			// 		$("#logger").text(data);
+			// 	}
+			// })
+			document.getElementById('logger').innerHTML += "<br>"+postid;
+		}
+	}
+
+	postid_input.addEventListener("keyup", function(event){
+		if (event.keyCode === 13){
+			event.preventDefault();
+			like_button.click();
+		}
+	});
+
+	
+</script>
+
+{% include 'common/footer.html' %}

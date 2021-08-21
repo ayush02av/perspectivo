@@ -1,25 +1,97 @@
-{% extends 'base.html' %}
-{% load static %}
-	
-{% block CSSBlock %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/workdisplay.css' %}">
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Perspectivo | {{ title }}</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/static/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/workdisplay.css">
+</head>
+<body>
+	{% include 'common/header.html' %}
+	<div id="root">
+		<div id="body">
+			<div id="work-display" class="section">
+				<div class="inner-section">
+					<div>
+						<h2>{{ work.Title }}</h2>
 
-	{% block BodyBlock %}
+						<small style="font-weight: 300; color: var(--secondary-1);">
+							<span>
+								By : <i onclick="Redirect('/profile/{{ work.ByUser.username }}/', true)" class="highlight-on-hover">{{ work.ByUser }}</i>
+							</span>
+							<span style="float: right;">
+								<i>{{ work.DateTimePosted }}</i>
+								<br>
+							</span>
+						</small>
 
-		<div id="work-display">
-			<h1>{{ work.Title }}</h1>
-			<small style="font-weight: 300; color: var(--helper-3);">By : <i>{{ work.ByUser }}, on {{ work.DateTimePosted }}</i></small>
-			<br><br>
-			{% if work.Image %}<center><img style="max-width: 100%; max-height: 400px; border-radius: 3px; box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.1), -10px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.1), 0px -10px 20px rgba(0, 0, 0, 0.1); " src="{{ work.Image.url }}"></center>{% endif %}
-			<p style="padding: 10px 20px;"><small><i>{{ work.MainLiner }}</i></small></p>
-			<br><br>
-			<p style="padding: 10px 10px;">{{ work.Content | safe }}</p>
+						<br>
+
+						{% if work.Image %}<center><img style="max-width: 100%; max-height: 400px; border-radius: 3px; box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.1), -10px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.1), 0px -10px 20px rgba(0, 0, 0, 0.1); " src="{{ work.Image.url }}"></center>{% endif %}
+
+						<center style="color: var(--helper-3);">
+							{{ work.MainLiner }}
+						</center>
+
+						<br>
+
+						{{ work.Content | safe }}
+
+					</div> 
+				</div>
+			</div>
+
+			<!-- <center> -->
+			<div class="section" style="min-height: 0;">
+				<div class="inner-section" style="padding: 0;">
+					<span style="color: green;">
+						Upvotes : {{ upvotes }}
+					</span>
+					&nbsp;&nbsp;<hr>&nbsp;&nbsp;
+					<span>
+						Net Rating : {{ work.Rating }}
+					</span>
+					&nbsp;&nbsp;<hr>&nbsp;&nbsp;
+					<span style="color: brown;">
+						Downvotes : {{ downvotes }}
+					</span>
+				</div>
+			</div>
+			<!-- </center> -->
+			<!-- <span></span> -->
+
+			<div class="section">
+				<div class="inner-section">
+					<div>
+						<h2>Reviews</h2>
+						<br>
+						<h3 onclick="ToggleReviewForm()" class="highlight-on-hover" style="display: inline-flex;">post a review</h3>
+						<br>
+						<form id="review-box">
+							<input type="name" name="review-title" placeholder="Your review title" autocomplete="off">
+							<br>
+							<textarea type="name" name="review-comment" placeholder="Your review comment"></textarea>
+							<br>
+							<input type="submit" name="submit" value="Post">
+						</form>
+						<br>
+						{% for review in reviews %}
+							<!-- {{ review }} -->
+							<i onclick="Redirect('/profile/{{ review.ByUser }}', true)" class="highlight-on-hover">{{ review.ByUser }}</i>&nbsp;&nbsp;|&nbsp;&nbsp;{{ review.Title }}
+							{% if review.Text %}
+							<p>
+								{{ review.Text }}
+							</p>
+							{% endif %}
+							<br><br><br>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
 		</div>
-
-	{% endblock %}
-
-
-file
-image
-reviews
+	</div>
+	{% include 'common/footer.html' %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/base.js"></script>
+	<script type="text/javascript" src="/static/js/workdisplay.js"></script>
+</body>

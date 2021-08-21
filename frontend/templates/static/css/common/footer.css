@@ -1,0 +1,49 @@
+#footer{
+	margin-top: 100px;
+	font-family: dubai;
+
+	width: 100%;
+	padding-top: 50px;
+
+	font-size: 22px;
+
+	background-image: linear-gradient( var(--secondary-1), var(--secondary-2) );
+	color: var( --helper-1 );
+	justify-content: center;
+	text-align: center;
+}
+
+#footer-container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
+}
+
+.footer-card{
+	text-align: left;
+	flex: 1 1 250px;
+	margin: 0 20px;
+	margin-bottom: 80px;
+}
+
+.footer-card > h2{
+	display: inline-flex;
+	margin-bottom: 20px;
+
+	font-weight: 300;
+
+	background: var(--primary-2);
+	color: white;
+
+	text-align: center;
+
+	border-radius: 5px;
+
+	padding: 0 50px;
+}
+
+.footer-card > li:hover{
+	margin-left: 5px;
+	transition: 0.3s;
+}

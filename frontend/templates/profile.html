@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Perspectivo | Feed</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/static/css/base.css">
+</head>
+<body>
+	{% include 'common/header.html' %}
+	<div id="root">
+		<div id="body">
+			<div class="section">
+				<div class="inner-section">
+					<div>
+						{% if user == request.user %}
+						<span onclick="Redirect('/account/logout')" class="highlight-on-hover">Log Out
+						</span>
+						{% endif %}
+						<h2>{{ user.username }}</h2>
+						<br>
+						Name : {{ user.get_full_name }}
+						<br>
+						Email : {{ user.email }}
+						<br>
+						Number : {{ user.number }}
+						<br>
+						About : {{ user.about }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% include 'common/footer.html' %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/base.js"></script>
+</body>

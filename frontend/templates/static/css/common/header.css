@@ -1,0 +1,21 @@
+#header{
+	justify-content: center;
+	text-align: center;
+	
+	background: #55D6BE;
+
+	background-image: linear-gradient(rgb(10,10,10), rgb(50, 50, 50));
+	background: orange;
+	color: purple;
+	
+	width: 100%;
+	height: var(--header-height);
+	
+	border-bottom-left-radius: var(--header-bottom-radius);
+	border-bottom-right-radius: var(--header-bottom-radius);
+}
+
+#header form input{
+	padding: 10px;
+	text-align: center;
+}

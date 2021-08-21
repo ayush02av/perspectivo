@@ -1,119 +1,134 @@
-{% extends 'base.html' %}
-{% load static %}
-	
-{% block CSSBlock %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-{% endblock %}
-
-	{% block BodyBlock %}
-		<div id="glimpse" class="section">
-			<div class="inner-section">
-				<span style="font-size: 5rem; font-family: 'Audiowide';  color: var(--helper-3);">
-					Top {{ top_number }}
-					<br>
-					<span style="font-size: 20px;">
-						<i onclick="Redirect('/feed/')" class="highlight-on-hover" style="cursor: pointer;">or check the whole feed</i>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Perspectivo</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/static/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+</head>
+<body>
+	{% include 'common/top_banner.html' %}
+	{% include 'common/header.html' %}
+	<div id="root">
+		<div id="body">
+			<div id="glimpse" class="section">
+				<div class="inner-section">
+					<span style="font-size: 5rem; font-family: 'Audiowide';  color: var(--helper-3);">
+						Top {{ top_number }}
+						<br>
+						<span style="font-size: 20px;">
+							<i onclick="Redirect('/feed/')" class="highlight-on-hover">or check the whole feed</i>
+						</span>
 					</span>
-				</span>
-				{% for work in works %}
-					<div class="work-card" onclick="Redirect('/{{ work.ByUser }}/{{ work.Title }}')">
-						<h3 style="font-weight: 500; color: var(--primary-2);">{{ work.Title }}</h3>
-						<small><small style="font-weight: 300; color: var(--primary-2);">By : <i>{{ work.ByUser }}</i></small></small>
+					{% for work in works %}
+						<div class="work-card" onclick="Redirect('/{{ work.ByUser }}/{{ work.Title }}', true)">
+							<h3 style="font-weight: 500; color: var(--primary-2);">{{ work.Title }}</h3>
+							<small><small style="font-weight: 300; color: var(--primary-2);">By : <i>{{ work.ByUser }}</i> <br> Rating : <i>{{ work.Rating }}</i></small></small>
+							<br><br>
+							<p style="font-weight: 300;">
+							<small>
+								{{ work.MainLiner }}<small><i>...read more</i></small>
+							</small>
+							</p>
+							<!-- <br>
+							<small><small>
+								{{ work.DateTimePosted }}
+							</small></small> -->
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div id="what" class="section">
+				<div class="inner-section">
+					<div>
+						<h2>What is Perspectivo?</h2>
+						<br>
+						Perspectivo is an online Art-Posting Website.
+						<br>
+						It allows one to share perspective through the medium of one's own definition of art.
 						<br><br>
-						<p style="font-weight: 300;">
-						<small>
-							{{ work.MainLiner }}<small><i>...read more</i></small>
-						</small>
-						</p>
-						<!-- <br>
-						<small><small>
-							{{ work.DateTimePosted }}
-						</small></small> -->
+						This online community sees & encourages art in forms of poems, music, photos, graphics, videos, in genres accross any bounds.
+						<br><br>
+						Create your own blog-profile & show us your artwork.
+						<center>
+							<span onclick="Redirect('/#vision'); document.getElementById('username-input').focus();" class="highlight-on-hover" style="font-weight: 600;">Start your journey NOW!</span>
+						</center>
 					</div>
-				{% endfor %}
-			</div>
-		</div>
 
-		<div id="what" class="section">
-			<div class="inner-section">
-				<div>
-					<h2>What is Perspectivo?</h2>
-					<br>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				</div>
-				<div>
-					<h2>How does it work?</h2>
-					<br>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				</div>
-			</div>
-		</div>
-
-		<div id="vision" class="section">
-			<div class="inner-section">
-				<div>
-					<h2>Perspectivo's Vision</h2>
-					<br>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</div>
-				<div>
-					<h2>Join the community now</h2>
-					<br>
-					<form>
-						<center style="font-weight: 500;">Become a partner</center>
-						<input type="name" name="name" placeholder="Your Name">
+					<div>
+						<h2>How does it work?</h2>
 						<br>
-						<input type="email" name="email" placeholder="Your Email Address">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</div>
+				</div>
+			</div>
+
+			<div id="vision" class="section">
+				<div class="inner-section">
+					<div>
+						<h2>Perspectivo's Vision</h2>
 						<br>
-						<input type="number" name="number" placeholder="Your Number">
-					</form>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</div>
+					<div>
+						<h2>Join the community now</h2>
+						<br>
+						<form method="POST" action="/account/">{% csrf_token %}
+							<h3>Become a partner</h3>
+							<input id="username-input" type="name" name="username" placeholder="Username *" required="Username is required">
+							<br>
+							<input type="name" name="name" placeholder="Full Name *" required>
+							<br>
+							<input type="email" name="email" placeholder="Email Address *" required>
+							<br>
+							<center>
+								<input type="submit" name="submit" value="Join">
+								<br>
+								<span style="color: var(--helper-3); font-size: 19px;" class="highlight-on-hover" onclick="Redirect('/account/?page=login')">
+									Or <i>Login Here</i>
+								</span>
+							</center>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div id="about" class="section">
+				<div class="inner-section">
+					<div>
+						<h2>About</h2>
+						<br>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						<br><br>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</div>
 				</div>
 			</div>
 		</div>
-
-		<div id="about" class="section">
-			<div class="inner-section">
-				<div>
-					<h2>About</h2>
-					<br>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</div>
-			</div>
-		</div>
-
-	{% endblock %}
+	</div>
+	{% include 'common/footer.html' %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/base.js"></script>
+</body>
+</html>
