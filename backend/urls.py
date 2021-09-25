@@ -25,5 +25,6 @@ admin.site.index_title = 'Overview'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
     path('', include('frontend.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
