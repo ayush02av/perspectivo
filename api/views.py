@@ -2,14 +2,20 @@ from django.shortcuts import render, redirect
 from rest_framework.decorators import api_view
 
 from .serializers import *
-# from utility.apiresponse import *
 
-from django.http import JsonResponse
+from utility.apiresponse import *
 
+@api_view(['GET'])
 def Work_API(request):
 	query_set = Work.objects.all()
-	serializer = Work_Serializer(query_set, many=True)
-	return JsonResponse(serializer.data, safe=False)
+	serializer = Work_Serializer
+	return Api_Get_Response(serializer, query_set)
+
+@api_view(['GET'])
+def Glimpses(request):
+	query_set = Work.objects.all().order_by('-Rating')
+	serializer = Glipmses_Serializer
+	return Api_Get_Response(serializer, query_set)
 
 
 

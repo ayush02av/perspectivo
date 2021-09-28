@@ -7,7 +7,7 @@ function Redirect(url, newTab=false){
 }
 
 $("span#home-link").click(function(){
-	Redirect("/");
+	Redirect("/?view-home=true");
 });
 
 $("#left_navigation_bar_content > ul > li").click(function(){

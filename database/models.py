@@ -1,16 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+import django.contrib.auth.validators
+
 import pytz, os, glob
 from utility import path
 
 from django.utils import timezone
 
 class User(AbstractUser):
-    about = models.TextField(max_length=500, null=True, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
-    number = models.CharField(max_length=10, null=True, blank=True)
-    profile_picture = models.ImageField(upload_to=path.User_Profile_Picture_Path, null=True, blank=True)
-    password = models.CharField(max_length=100, editable=False)
+	about = models.TextField(max_length=500, null=True, blank=True)
+	birth_date = models.DateField(null=True, blank=True)
+	number = models.CharField(max_length=10, null=True, blank=True)
+	profile_picture = models.ImageField(upload_to=path.User_Profile_Picture_Path, null=True, blank=True)
+	password = models.CharField(max_length=100, editable=False)
 
     # def save(self, *args, **kwargs):
     #     super(User, self).save(*args, **kwargs)

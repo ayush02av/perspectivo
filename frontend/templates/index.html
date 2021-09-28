@@ -15,28 +15,12 @@
 			<div id="glimpse" class="section">
 				<div class="inner-section">
 					<span style="font-size: 5rem; font-family: 'Audiowide';  color: var(--helper-3);">
-						Top {{ top_number }}
+						Top <span id="glimpses-length"></span>
 						<br>
 						<span style="font-size: 20px;">
 							<i onclick="Redirect('/feed/')" class="highlight-on-hover">or check the whole feed</i>
 						</span>
 					</span>
-					{% for work in works %}
-						<div class="work-card" onclick="Redirect('/{{ work.ByUser }}/{{ work.Title }}', true)">
-							<h3 style="font-weight: 500; color: var(--primary-2);">{{ work.Title }}</h3>
-							<small><small style="font-weight: 300; color: var(--primary-2);">By : <i>{{ work.ByUser }}</i> <br> Rating : <i>{{ work.Rating }}</i></small></small>
-							<br><br>
-							<p style="font-weight: 300;">
-							<small>
-								{{ work.MainLiner }}<small><i>...read more</i></small>
-							</small>
-							</p>
-							<!-- <br>
-							<small><small>
-								{{ work.DateTimePosted }}
-							</small></small> -->
-						</div>
-					{% endfor %}
 				</div>
 			</div>
 
@@ -131,5 +115,6 @@
 	{% include 'common/footer.html' %}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/static/js/base.js"></script>
+	<script type="text/javascript" src="/static/js/index.js"></script>
 </body>
 </html>
